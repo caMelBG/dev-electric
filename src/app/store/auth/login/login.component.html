@@ -1,0 +1,23 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3_login_module">
+        <div class="module form-module">
+            <div class="toggle">
+                <i class="fa fa-user" routerLink="/signup"></i>
+                <div class="tooltip"> Sing Up</div>
+            </div>
+            <div class="form">
+                <h2>Login to your account</h2>
+                <div>
+                    <input type="text" class="formControl" placeholder="Username" #userName required>
+                    <input type="password" class="formControl" placeholder="Password" #userPassword required>
+                    <input type="button" class="btn btnPrimary login" value="Log in"
+                        (click)="authService.SignIn(userName.value, userPassword.value)">
+                </div>
+            </div>
+            <button type="button" class="cta googleBtn" (click)="authService.GoogleAuth()">
+                <i class="fab fa-google-plus-g"></i>
+                Log in with Google
+            </button>
+        </div>
+    </div>
+</div>

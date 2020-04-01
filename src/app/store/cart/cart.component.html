@@ -1,0 +1,80 @@
+<div class="w3l_banner_nav_right">
+
+    <div class="privacy about cart">
+        <h3>Cart</h3>
+
+        <div class="checkout-right">
+            <h4>Your shopping cart contains: <span>{{ order.orderItems.length }} Products</span></h4>
+            <table class="timetable_sub  table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Product</th>
+                        <th>Quality</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderItem of order.orderItems; index as i" class="rem{{ i }}"
+                        [class.even]="i % 2 == 0">
+                        <td class="invert">{{ i + 1 }}</td>
+                        <td class="invert-image">
+                            <a [routerLink]="['/product', orderItem.product.id]">
+                                <img [src]="orderItem.product.image" alt=" " class="img-responsive">
+                            </a>
+                        </td>
+                        <td class="invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    <div (click)="increaseQuantity(orderItem.productId)"
+                                        class="entry value-plus active">&nbsp;
+                                    </div>
+                                    <div class="entry value"><span>{{ orderItem.quantity }}</span></div>
+                                    <div (click)="decreaseQuantity(orderItem.productId)" class="entry value-minus">
+                                        &nbsp;</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="invert">{{ orderItem.product.name }}</td>
+
+                        <td class="invert">{{ orderItem.product.price | currency:'USD':'symbol':'0.2-2'  }}</td>
+                        <td class="invert">
+                            {{ (orderItem.quantity * orderItem.product.price) | currency:'USD':'symbol':'0.2-2'  }}</td>
+                        <td class="invert">
+                            <div (click)="removeProduct(orderItem.productId)" class="rem">
+                                <div class="close{{ i + 1 }}"> </div>
+                            </div>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td> {{ order.total | currency:'USD':'symbol':'0.2-2' }} </td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="checkout-left">
+    <div class="col-md-6 address_form_agile">
+        <button [routerLink]="['/checkout']" class="submit check_out">
+            Checkout
+        </button>
+    </div>
+
+    <div class="clearfix"> </div>
+
+</div>

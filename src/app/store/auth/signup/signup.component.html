@@ -1,0 +1,25 @@
+<div class="w3l_banner_nav_right">
+    <div class="w3_login_module">
+        <div class="module form-module">
+            <div class="toggle">
+                <i class="fa fa-user" routerLink="/login"></i>
+                <div class="tooltip"> Login </div>
+            </div>
+            <div class="form">
+                <h2>Create an account</h2>
+                <div>
+                    <input type="email" class="formControl" placeholder="Username" #username required>
+                    <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
+                    <input type="password" class="formControl" placeholder="Password" #userPwd required>
+                    <input type="password" class="formControl" placeholder="Confirm Password" #userConfPwd required>
+                    <input type="button" class="btn btnPrimary singup" value="Sign Up"
+                        (click)="authService.SignUp(userEmail.value, userPwd.value)">
+                </div>
+            </div>
+            <button type="button" class="cta googleBtn" (click)="authService.GoogleAuth()">
+                <i class="fab fa-google-plus-g"></i>
+                Continue with Google
+            </button>
+        </div>
+    </div>
+</div>

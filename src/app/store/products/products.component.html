@@ -1,0 +1,48 @@
+<div class="w3l_banner_nav_right">
+
+    <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+        <h3 class="w3l_title products">{{ categoryName }}</h3>
+        <div class="w3l_products">
+
+            <div *ngFor='let product of (products)' class="col-md-3" style="height: 400px; margin-bottom: 100px;">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid_pos" style="position: unset;">
+
+                            <a [routerLink]="['/product', product.id]">
+                                <img src="{{ product.image }}" alt=" " class="img-responsive"
+                                    style="height: 150px !important;">
+                            </a>
+
+                        </div>
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+
+                                        <p> {{ product.name }} </p>
+                                        <h4> {{ product.price | currency:'USD':'symbol':'0.2-2' }} </h4>
+
+                                    </div>
+                                    <div class="snipcart-details">
+                                        <a [routerLink]="['/cart', product.id]">
+                                            <input type="submit" name="submit" value="Add to cart" class="button">
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+
+        <div class="btn-group align-middle">
+            <button *counter="let page of pages" class="btn btn-outline-primary" [class.active]="page == selectedPage"
+                (click)="changePage(page)">
+                {{ page }}
+            </button>
+        </div>
+    </div>
+</div>
